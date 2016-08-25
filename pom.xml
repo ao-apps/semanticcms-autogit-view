@@ -48,6 +48,12 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 
 	<dependencies>
 		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-core-servlet</artifactId>
 			<version>1.5-SNAPSHOT</version>
