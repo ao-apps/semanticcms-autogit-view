@@ -1,0 +1,158 @@
+<!--
+semanticcms-autogit-view - SemanticCMS view of automatic Git status.
+Copyright (C) 2016  AO Industries, Inc.
+	support@aoindustries.com
+	7262 Bull Pen Cir
+	Mobile, AL 36695
+
+This file is part of semanticcms-autogit-view.
+
+semanticcms-autogit-view is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+semanticcms-autogit-view is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--
+Views the Git status.
+
+Arguments:
+	arg.page  The page that should be displayed, this must have already been captured with at least meta data.
+-->
+<jsp:root
+	xmlns:ao="http://aoindustries.com/ao-taglib"
+	xmlns:autogit="https://semanticcms.com/semanticcms-autogit-taglib"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	version="2.1"
+>
+	<jsp:directive.page language="java" buffer="512kb" autoFlush="true" pageEncoding="UTF-8" session="false" />
+
+	<c:set var="page" value="${arg.page}" />
+	<c:set var="pageRef" value="${page.pageRef}" />
+	<c:set var="gitStatus" value="${autogit:getGitStatus()}" />
+
+	<h1 id="gitStatusH1" class="${fn:escapeXml(gitStatus.state.cssClass)}">Git Status - <ao:out value="${gitStatus.state}" /></h1>
+	<!-- Find if there is any "module" and "to" values -->
+	<c:set var="hasModule" value="false" />
+	<c:set var="hasTo" value="false" />
+	<c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
+		<c:if test="${!empty uncommittedChange.module}">
+			<c:set var="hasModule" value="true" />
+		</c:if>
+		<c:if test="${!empty uncommittedChange.to}">
+			<c:set var="hasTo" value="true" />
+		</c:if>
+	</c:forEach>
+	<div id="uncommittedChangesTableContainer" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
+		<table id="uncommittedChangesTable" class="thinTable">
+			<thead>
+				<tr>
+					<th>XY</th>
+					<th>Meaning</th>
+					<c:if test="${hasModule}">
+						<th>Module</th>
+					</c:if>
+					<th>From</th>
+					<c:if test="${hasTo}">
+						<th>To</th>
+					</c:if>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
+					<c:set var="meaning" value="${uncommittedChange.meaning}" />
+					<tr>
+						<td><code style="white-space:pre"><ao:out value="${uncommittedChange.x}${uncommittedChange.y}" /></code></td>
+						<td class="${fn:escapeXml(meaning.state.cssClass)}"><ao:out value="${meaning}" /></td>
+						<c:if test="${hasModule}">
+							<td><ao:out value="${uncommittedChange.module}" /></td>
+						</c:if>
+						<!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
+						<td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.from}" /></td>
+						<c:if test="${hasTo}">
+							<!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
+							<td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.to}" /></td>
+						</c:if>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<!-- TODO: Move to separate script file with view-specific include -->
+	<ao:script><![CDATA[
+		// Keep this page up-to-date via Ajax
+		function updateGitStatus(title, h1, h1Class, uncommittedChanges) {
+			// Find if there is any "module" and "to" values
+			var hasModule = false;
+			var hasTo = false;
+			for(var i=0; i < uncommittedChanges.length; i++) {
+				var uncommittedChange = uncommittedChanges[i];
+				if(uncommittedChange.module !== "") {
+					hasModule = true;
+					if(hasTo) break;
+				}
+				if(uncommittedChange.to !== "") {
+					hasTo = true;
+					if(hasModule) break;
+				}
+			}
+			console.log("hasModule: " + hasModule);
+			console.log("hasTo: " + hasTo);
+
+			// title
+			document.title = title;
+
+			// h1
+			$("#gitStatusH1").text(h1).removeClass().addClass(h1Class);
+
+			// uncommittedChangesTableContainer div
+			var container = $("#uncommittedChangesTableContainer");
+			if(uncommittedChanges.length == 0) container.hide();
+			else container.show();
+
+			// uncommittedChangesTable table
+			var table = $("#uncommittedChangesTable");
+
+			// Update table headers from hasModule and hasTo
+			var tr = table.children("thead").children("tr");
+			// TODO
+
+			// TODO: Update table data
+		}
+
+		$(document).ready(function(){
+			semanticcms_autogit_taglib.gitStatusListeners.push(
+				{
+					onComplete: function(result) {
+						// console.log(result);
+						var gitStatus = result.gitStatus;
+						var state = gitStatus.state;
+						updateGitStatus(
+							"Git Status - " + state,
+							"Git Status - " + state,
+							state.cssClass,
+							gitStatus.uncommittedChanges
+						);
+					},
+					onError: function(textStatus, errorThrown) {
+						updateGitStatus(
+							"Git Status - Ajax Error",
+							"Git Status - Ajax Error",
+							"gitStatusAjaxError",
+							new Array()
+						);
+					}
+				}
+			);
+		});
+	]]></ao:script>
+</jsp:root>
