@@ -41,7 +41,7 @@ Arguments:
 	<c:set var="pageRef" value="${page.pageRef}" />
 	<c:set var="gitStatus" value="${autogit:getGitStatus()}" />
 
-	<h1 id="gitStatusH1" class="${fn:escapeXml(gitStatus.state.cssClass)}">Git Status - <ao:out value="${gitStatus.state}" /></h1>
+	<h1 id="semanticcms-autogit-view-h1" class="${fn:escapeXml(gitStatus.state.cssClass)}">Git Status - <ao:out value="${gitStatus.state}" /></h1>
 	<!-- Find if there is any "module" and "to" values -->
 	<c:set var="hasModule" value="false" />
 	<c:set var="hasTo" value="false" />
@@ -53,8 +53,9 @@ Arguments:
 			<c:set var="hasTo" value="true" />
 		</c:if>
 	</c:forEach>
-	<div id="uncommittedChangesTableContainer" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
-		<table id="uncommittedChangesTable" class="thinTable">
+	<div id="semanticcms-autogit-view-uncommitted-changes-table-container" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
+		<!-- TODO: "thinTable" is not a general concept -->
+		<table id="semanticcms-autogit-view-uncommitted-changes-table" class="thinTable">
 			<thead>
 				<tr>
 					<th>XY</th>
@@ -113,15 +114,15 @@ Arguments:
 			document.title = title;
 
 			// h1
-			$("#gitStatusH1").text(h1).removeClass().addClass(h1Class);
+			$("#semanticcms-autogit-view-h1").text(h1).removeClass().addClass(h1Class);
 
-			// uncommittedChangesTableContainer div
-			var container = $("#uncommittedChangesTableContainer");
+			// semanticcms-autogit-view-uncommitted-changes-table-container div
+			var container = $("#semanticcms-autogit-view-uncommitted-changes-table-container");
 			if(uncommittedChanges.length == 0) container.hide();
 			else container.show();
 
-			// uncommittedChangesTable table
-			var table = $("#uncommittedChangesTable");
+			// semanticcms-autogit-view-uncommitted-changes-table table
+			var table = $("#semanticcms-autogit-view-uncommitted-changes-table");
 
 			// Update table headers from hasModule and hasTo
 			var tr = table.children("thead").children("tr");
@@ -148,7 +149,7 @@ Arguments:
 						updateGitStatus(
 							"Git Status - Ajax Error",
 							"Git Status - Ajax Error",
-							"gitStatusAjaxError",
+							"semanticcms-autogit-state-ajax-error",
 							new Array()
 						);
 					}
