@@ -22,24 +22,24 @@
  */
 
 /*
- * After including this script, be sure to set the lastGitStatusCssClass to a correct value.
+ * After including this script, be sure to set the lastViewLinkCssClass to a correct value.
  */
 semanticcms_autogit_view = {
 	/*
 	 * The most recently set Git status CSS class.  This is set by JSP just after this
 	 * script is included.
 	 */
-	lastGitStatusCssClass : null,
+	lastViewLinkCssClass : null,
 
 	/*
 	 * Updates the CSS class.
 	 */
-	updatePageTopLinkGitStatus : function(cssClass) {
+	updateViewLinkClass : function(cssClass) {
 		// console.log("cssClass = " + cssClass);
-		if(cssClass !== semanticcms_autogit_view.lastGitStatusCssClass) {
+		if(cssClass !== semanticcms_autogit_view.lastViewLinkCssClass) {
 			// Update class on element
-			$("#pageTopLinkGitStatus").removeClass(semanticcms_autogit_view.lastGitStatusCssClass).addClass(cssClass);
-			semanticcms_autogit_view.lastGitStatusCssClass = cssClass;
+			$("#semanticcms-autogit-view-link").removeClass(semanticcms_autogit_view.lastViewLinkCssClass).addClass(cssClass);
+			semanticcms_autogit_view.lastViewLinkCssClass = cssClass;
 		}
 	}
 };
@@ -52,10 +52,10 @@ $(document).ready(function(){
 		{
 			onComplete: function(result) {
 				// console.log(result);
-				semanticcms_autogit_view.updatePageTopLinkGitStatus(result.gitStatus.state.cssClass);
+				semanticcms_autogit_view.updateViewLinkClass(result.gitStatus.state.cssClass);
 			},
 			onError: function(textStatus, errorThrown) {
-				semanticcms_autogit_view.updatePageTopLinkGitStatus("semanticcms-autogit-state-ajax-error");
+				semanticcms_autogit_view.updateViewLinkClass("semanticcms-autogit-state-ajax-error");
 			}
 		}
 	);

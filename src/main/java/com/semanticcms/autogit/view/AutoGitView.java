@@ -23,6 +23,7 @@
 package com.semanticcms.autogit.view;
 
 import com.aoindustries.servlet.http.Dispatcher;
+import com.semanticcms.autogit.servlet.AutoGitContextListener;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.Headers;
 import com.semanticcms.core.servlet.View;
@@ -71,6 +72,16 @@ public class AutoGitView extends View {
 		Page page
 	) throws ServletException, IOException {
 		return !Headers.isExporting(request);
+	}
+
+	@Override
+	public String getLinkId() {
+		return "semanticcms-autogit-view-link";
+	}
+
+	@Override
+	public String getLinkCssClass(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
+		return AutoGitContextListener.getGitStatus(servletContext, request).getState().getCssClass();
 	}
 
 	@Override

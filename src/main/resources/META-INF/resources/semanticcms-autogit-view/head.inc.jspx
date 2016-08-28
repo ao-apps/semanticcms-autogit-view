@@ -32,7 +32,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses/>
 	<c:if test="${!p:isExporting()}">
 		<ao:script src="/semanticcms-autogit-view/scripts.js" />
 		<ao:script>
-			semanticcms_autogit_view.lastGitStatusCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
+			semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
 		</ao:script>
 	</c:if>
 </jsp:root>
