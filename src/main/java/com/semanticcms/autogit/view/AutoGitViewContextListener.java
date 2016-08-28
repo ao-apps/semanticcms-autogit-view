@@ -27,12 +27,16 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-@WebListener("Registers the \"" + AutoGitView.VIEW_NAME + "\" view in SemanticCMS.")
+@WebListener("Registers the \"" + AutoGitView.VIEW_NAME + "\" view and \"" + AutoGitViewContextListener.HEAD_INCLUDE + "\" head include in SemanticCMS.")
 public class AutoGitViewContextListener implements ServletContextListener {
+
+	static final String HEAD_INCLUDE = "/semanticcms-autogit-view/head.inc.jspx";
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		SemanticCMS.getInstance(event.getServletContext()).addView(new AutoGitView());
+		SemanticCMS semanticCMS = SemanticCMS.getInstance(event.getServletContext());
+		semanticCMS.addView(new AutoGitView());
+		semanticCMS.addHeadInclude(HEAD_INCLUDE);
 	}
 
 	@Override
