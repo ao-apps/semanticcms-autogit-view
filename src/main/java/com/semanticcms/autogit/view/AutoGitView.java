@@ -29,6 +29,7 @@ import com.semanticcms.core.servlet.Headers;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -102,6 +103,11 @@ public class AutoGitView extends View {
 	@Override
 	public String getKeywords(Page page) {
 		return null;
+	}
+
+	@Override
+	public Map<String, String> getScripts() {
+		return Collections.singletonMap("jquery", "/webjars/jquery/2.2.4/jquery.min.js");
 	}
 
 	/**
