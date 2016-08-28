@@ -28,7 +28,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses/>
 	version="2.1"
 >
 	<jsp:directive.page language="java" buffer="512kb" autoFlush="true" pageEncoding="UTF-8" session="false" />
-	<c:if test="${!header['X-com-aoindustries-web-page-exporting']}">
+	<c:if test="${!header['X-com-semanticcms-core-exporting']}">
 		<ao:script src="/semanticcms-autogit-view/scripts.js" />
 		<ao:script>
 			semanticcms_autogit_view.lastGitStatusCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
