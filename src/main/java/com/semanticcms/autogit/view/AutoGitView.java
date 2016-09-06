@@ -114,7 +114,7 @@ public class AutoGitView extends View {
 	 * No robots for transient Git status.
 	 */
 	@Override
-	public boolean getAllowRobots(Page page) {
+	public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
 		return false;
 	}
 
