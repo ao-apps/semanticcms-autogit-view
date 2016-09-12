@@ -38,6 +38,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 	<name>SemanticCMS AutoGit View</name>
 	<url>https://semanticcms.com/autogit/view/</url>
 	<description>SemanticCMS view of automatic Git status.</description>
+	<inceptionYear>2016</inceptionYear>
 
 	<scm>
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-autogit-view.git</connection>
