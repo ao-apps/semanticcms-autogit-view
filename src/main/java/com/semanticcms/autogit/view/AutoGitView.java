@@ -92,7 +92,12 @@ public class AutoGitView extends View {
 		HttpServletResponse response,
 		Page page
 	) {
-		return "Git Status" + TITLE_SEPARATOR + page.getPageRef().getBook().getTitle();
+		String bookTitle = page.getPageRef().getBook().getTitle();
+		if(bookTitle != null && !bookTitle.isEmpty()) {
+			return "Git Status" + TITLE_SEPARATOR + bookTitle;
+		} else {
+			return "Git Status";
+		}
 	}
 
 	@Override
