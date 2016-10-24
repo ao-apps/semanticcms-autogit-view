@@ -38,9 +38,6 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 	<properties>
 		<bookPath>/autogit/view</bookPath>
 		<shortTitle>View</shortTitle>
-		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="${project.parent.parent.url}">${project.parent.parent.name}</a>
-/ <a target="_top" href="${project.parent.url}">AutoGit</a>
-/ <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a> view of automatic Git status.]]></description.html>
 	</properties>
 
