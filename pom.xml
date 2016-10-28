@@ -38,7 +38,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 	<properties>
 		<bookPath>/autogit/view</bookPath>
 		<shortTitle>View</shortTitle>
-		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a> view of automatic Git status.]]></description.html>
+		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a> view of <a target="_top" href="https://semanticcms.com/autogit/">automatic Git</a> status.]]></description.html>
 	</properties>
 
 	<name>SemanticCMS AutoGit View</name>

@@ -36,7 +36,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 	>
 		<core:child page="apidocs/index.jspx" />
 		<p>
-			<core:link book="/" page="/index.jspx" /> view of automatic Git status.
+			<core:link book="/" page="/index.jspx" /> view of <core:link book="/autogit" page="/index.jspx">automatic Git</core:link> status.
 		</p>
 		<section:section label="Project Links">
 			<ul>

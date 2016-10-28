@@ -1,5 +1,5 @@
 # [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://www.aoindustries.com/) [SemanticCMS](https://semanticcms.com/) / [AutoGit](https://semanticcms.com/autogit/) / [View](https://semanticcms.com/autogit/view/)
-[SemanticCMS](https://semanticcms.com/) view of automatic Git status.
+[SemanticCMS](https://semanticcms.com/) view of [automatic Git](https://semanticcms.com/autogit/) status.
 
 ## Project Links
 * [Project Home](https://semanticcms.com/autogit/view/)
