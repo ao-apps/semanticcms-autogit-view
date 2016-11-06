@@ -28,7 +28,7 @@ Arguments:
 	arg.page  The page that should be displayed, this must have already been captured with at least meta data.
 -->
 <jsp:root
-	xmlns:ao="http://aoindustries.com/ao-taglib"
+	xmlns:ao="https://aoindustries.com/ao-taglib/"
 	xmlns:autogit="https://semanticcms.com/autogit/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"

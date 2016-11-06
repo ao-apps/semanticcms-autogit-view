@@ -21,7 +21,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <jsp:root
-	xmlns:ao="http://aoindustries.com/ao-taglib"
+	xmlns:ao="https://aoindustries.com/ao-taglib/"
 	xmlns:autogit="https://semanticcms.com/autogit/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:core="https://semanticcms.com/core/taglib/"
