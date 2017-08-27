@@ -24,10 +24,10 @@ package com.semanticcms.autogit.view;
 
 import com.aoindustries.servlet.http.Dispatcher;
 import com.semanticcms.autogit.servlet.AutoGitContextListener;
+import com.semanticcms.core.controller.SemanticCMS;
 import com.semanticcms.core.model.Page;
-import com.semanticcms.core.servlet.Headers;
-import com.semanticcms.core.servlet.SemanticCMS;
-import com.semanticcms.core.servlet.View;
+import com.semanticcms.core.renderer.html.Headers;
+import com.semanticcms.core.renderer.html.View;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
