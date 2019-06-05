@@ -208,7 +208,6 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId>
 		</dependency>
 		<dependency>
-			<!-- TODO: Update -->
 			<groupId>org.webjars</groupId><artifactId>jquery</artifactId>
 		</dependency>
 		<dependency>
