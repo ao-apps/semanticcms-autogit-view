@@ -1,6 +1,6 @@
 /*
  * semanticcms-autogit-view - SemanticCMS view of automatic Git status.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -112,7 +112,8 @@ public class AutoGitView extends View {
 
 	@Override
 	public Map<String, String> getScripts() {
-		return Collections.singletonMap("jquery", "/webjars/jquery/2.2.4/jquery.min.js");
+		// TODO: Get version from MavenProperties, other places, too (even inside jsps)
+		return Collections.singletonMap("jquery", "/webjars/jquery/3.4.1/jquery.min.js");
 	}
 
 	/**
