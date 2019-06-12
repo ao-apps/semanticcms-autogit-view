@@ -112,8 +112,7 @@ public class AutoGitView extends View {
 
 	@Override
 	public Map<String, String> getScripts() {
-		// TODO: Get version from MavenProperties, other places, too (even inside jsps)
-		return Collections.singletonMap("jquery", "/webjars/jquery/3.4.1/jquery.min.js");
+		return Collections.singletonMap("jquery", "/webjars/jquery/" + Maven.properties.getProperty("jquery.version") + "/jquery.min.js");
 	}
 
 	/**
