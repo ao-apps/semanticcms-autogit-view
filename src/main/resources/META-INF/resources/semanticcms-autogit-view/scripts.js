@@ -1,6 +1,6 @@
 /*
  * semanticcms-autogit-view - SemanticCMS view of automatic Git status.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -38,7 +38,7 @@ semanticcms_autogit_view = {
 		// console.log("cssClass = " + cssClass);
 		if(cssClass !== semanticcms_autogit_view.lastViewLinkCssClass) {
 			// Update class on element
-			$("#semanticcms-autogit-view-link").removeClass(semanticcms_autogit_view.lastViewLinkCssClass).addClass(cssClass);
+			jQuery("#semanticcms-autogit-view-link").removeClass(semanticcms_autogit_view.lastViewLinkCssClass).addClass(cssClass);
 			semanticcms_autogit_view.lastViewLinkCssClass = cssClass;
 		}
 	}
@@ -47,7 +47,7 @@ semanticcms_autogit_view = {
 /*
  * Listen to the Git status polling.
  */
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	semanticcms_autogit_taglib.gitStatusListeners.push(
 		{
 			onComplete: function(result) {
