@@ -37,7 +37,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T16:05:54-0500"
-		dateModified="2019-06-04T15:21:46-0500"
+		dateModified="2019-06-12T22:08:16-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-autogit-view:pom.version}" />
@@ -61,6 +61,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 							<li>This project's managed dependencies may also be imported by other projects.</li>
 						</ol>
 					</li>
+					<li>Changed "$" to "jQuery" for jQuery 3 compatibility.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
