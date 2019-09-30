@@ -36,7 +36,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T16:05:54-0500"
-		dateModified="2019-06-23T00:25:44-0500"
+		dateModified="2019-09-30T07:00:48-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-autogit-view:pom.version}" />
@@ -51,7 +51,11 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Updated dependencies.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
