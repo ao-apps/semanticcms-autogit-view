@@ -66,9 +66,10 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 								<!-- Java EE -->
 								<link>${javac.link.javaeeApi.6}</link>
 								<!-- Direct -->
+								<link>https://aoindustries.com/ao-lang/apidocs/</link>
 								<link>https://aoindustries.com/ao-servlet-firewall/webjars/apidocs/</link>
+								<link>https://aoindustries.com/ao-servlet-util/apidocs/</link>
 								<link>https://aoindustries.com/ao-taglib/apidocs/</link>
-								<link>https://aoindustries.com/aocode-public/apidocs/</link>
 								<!-- No apidocs: <groupId>org.webjars</groupId><artifactId>jquery</artifactId> -->
 								<link>https://semanticcms.com/autogit/model/apidocs/</link>
 								<link>https://semanticcms.com/autogit/servlet/apidocs/</link>
@@ -95,13 +96,16 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 			</dependency>
 			<!-- Direct -->
 			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>3.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId><version>1.0.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>3.1.0-SNAPSHOT</version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId><version>1.0.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>3.0.1-SNAPSHOT</version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>4.0.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>org.webjars</groupId><artifactId>jquery</artifactId><version>3.4.1</version>
@@ -148,14 +152,17 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		</dependency>
 		<!-- Direct -->
 		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId>
+		</dependency>
+		<dependency>
 			<!-- Open servlet firewall for /webjars/*** -->
 			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
+			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId>
+			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId><artifactId>jquery</artifactId>
