@@ -1,6 +1,6 @@
 /*
  * semanticcms-autogit-view - SemanticCMS view of automatic Git status.
- * Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,6 +22,7 @@
  */
 package com.semanticcms.autogit.view;
 
+import com.aoindustries.html.Html;
 import com.aoindustries.servlet.http.Dispatcher;
 import com.semanticcms.autogit.servlet.AutoGitContextListener;
 import com.semanticcms.core.model.Page;
@@ -125,7 +126,7 @@ public class AutoGitView extends View {
 	}
 
 	@Override
-	public void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) throws ServletException, IOException, SkipPageException {
+	public void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Html html, Page page) throws ServletException, IOException, SkipPageException {
 		Dispatcher.include(
 			servletContext,
 			JSPX_TARGET,
