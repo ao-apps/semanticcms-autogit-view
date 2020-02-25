@@ -56,8 +56,7 @@ Arguments:
 		</c:if>
 	</c:forEach>
 	<div id="semanticcms-autogit-view-uncommitted-changes-table-container" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
-		<!-- TODO: "thinTable" is not a general concept -->
-		<table id="semanticcms-autogit-view-uncommitted-changes-table" class="thinTable">
+		<table id="semanticcms-autogit-view-uncommitted-changes-table" class="ao-grid">
 			<thead>
 				<tr>
 					<th>XY</th>

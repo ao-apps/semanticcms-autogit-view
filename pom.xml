@@ -72,6 +72,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 								<!-- Direct -->
 								<link>https://aoindustries.com/ao-lang/apidocs/</link>
 								<link>https://aoindustries.com/ao-servlet-util/apidocs/</link>
+								<!-- No apidocs: <groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId> -->
 								<link>https://aoindustries.com/ao-taglib/apidocs/</link>
 								<!-- No apidocs: <groupId>org.webjars</groupId><artifactId>jquery</artifactId> -->
 								<link>https://semanticcms.com/autogit/model/apidocs/</link>
@@ -102,6 +103,9 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>5.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -152,6 +156,9 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
