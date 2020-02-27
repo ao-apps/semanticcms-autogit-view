@@ -24,24 +24,46 @@ package com.semanticcms.autogit.view;
 
 import com.aoindustries.html.Html;
 import com.aoindustries.servlet.http.Dispatcher;
-import com.semanticcms.autogit.servlet.AutoGitContextListener;
+import com.semanticcms.autogit.servlet.AutoGit;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.Headers;
+import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.SkipPageException;
 
 public class AutoGitView extends View {
 
-	static final String VIEW_NAME = "git-status";
+	public static final String NAME = "git-status";
+
+	private static final String HEAD_INCLUDE = "/semanticcms-autogit-view/head.inc.jspx";
 
 	private static final String JSPX_TARGET = "/semanticcms-autogit-view/view.inc.jspx";
+
+	@WebListener("Registers the \"" + NAME + "\" view and \"" + HEAD_INCLUDE + "\" head include in SemanticCMS.")
+	public static class Initializer implements ServletContextListener {
+		@Override
+		public void contextInitialized(ServletContextEvent event) {
+			SemanticCMS semanticCMS = SemanticCMS.getInstance(event.getServletContext());
+			semanticCMS.addView(new AutoGitView());
+			semanticCMS.addHeadInclude(HEAD_INCLUDE);
+		}
+		@Override
+		public void contextDestroyed(ServletContextEvent event) {
+			// Do nothing
+		}
+	}
+
+	private AutoGitView() {}
 
 	@Override
 	public Group getGroup() {
@@ -55,7 +77,7 @@ public class AutoGitView extends View {
 
 	@Override
 	public String getName() {
-		return VIEW_NAME;
+		return NAME;
 	}
 
 	@Override
@@ -83,7 +105,7 @@ public class AutoGitView extends View {
 
 	@Override
 	public String getLinkCssClass(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
-		return AutoGitContextListener.getGitStatus(servletContext, request).getState().getCssClass();
+		return AutoGit.getGitStatus(servletContext, request).getState().getCssClass();
 	}
 
 	@Override
