@@ -32,7 +32,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses/>
 	<jsp:directive.page language="java" pageEncoding="UTF-8" />
 	<jsp:directive.page session="false" />
 	<c:if test="${!core:isExporting()}">
-		<ao:script src="/semanticcms-autogit-view/scripts.js" />
+		<ao:script src="/semanticcms-autogit-view/semanticcms-autogit-view.js" />
 		<ao:script>
 			semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
 		</ao:script>
