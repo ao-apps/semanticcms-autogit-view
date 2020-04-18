@@ -70,19 +70,14 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 								<!-- Java EE -->
 								<link>${javadoc.link.javaee}</link>
 								<!-- Direct -->
+								<link>https://aoindustries.com/ao-fluent-html/apidocs/</link>
 								<link>https://aoindustries.com/ao-lang/apidocs/</link>
-								<link>https://aoindustries.com/ao-servlet-firewall/webjars/apidocs/</link>
 								<link>https://aoindustries.com/ao-servlet-util/apidocs/</link>
-								<link>https://aoindustries.com/ao-style/apidocs/</link>
-								<link>https://aoindustries.com/ao-taglib/apidocs/</link>
-								<!-- No apidocs: <groupId>org.webjars</groupId><artifactId>jquery</artifactId> -->
 								<link>https://semanticcms.com/autogit/model/apidocs/</link>
 								<link>https://semanticcms.com/autogit/servlet/apidocs/</link>
-								<link>https://semanticcms.com/autogit/taglib/apidocs/</link>
 								<link>https://semanticcms.com/core/controller/apidocs/</link>
 								<link>https://semanticcms.com/core/model/apidocs/</link>
 								<link>https://semanticcms.com/core/renderer/html/apidocs/</link>
-								<link>https://semanticcms.com/core/taglib/apidocs/</link>
 							</links>
 						</configuration>
 					</plugin>
@@ -101,13 +96,32 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 			</dependency>
 			<!-- Direct -->
 			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><version>0.1.0${POST-SNAPSHOT}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>4.1.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-model</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-servlet</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<!-- Runtime Direct -->
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId><version>1.0.0${POST-SNAPSHOT}</version>
@@ -119,22 +133,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 				<groupId>org.webjars</groupId><artifactId>jquery</artifactId><version>3.4.1</version>
 			</dependency>
 			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-model</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-servlet</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
 				<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-taglib</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -152,40 +151,21 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 			<groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId><artifactId>jstl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId><artifactId>jstl-impl</artifactId>
-		</dependency>
 		<!-- Direct -->
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId>
 		</dependency>
 		<dependency>
-			<!-- Open servlet firewall for /webjars/*** -->
-			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId><artifactId>jquery</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-model</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-servlet</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-taglib</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId>
@@ -196,8 +176,39 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId>
 		</dependency>
+		<!-- Runtime Direct -->
+		<dependency>
+			<!-- Open servlet firewall for /webjars/*** -->
+			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-firewall-webjars</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-style</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId><artifactId>jquery</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId><artifactId>jstl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId><artifactId>jstl-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-taglib</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 </project>
