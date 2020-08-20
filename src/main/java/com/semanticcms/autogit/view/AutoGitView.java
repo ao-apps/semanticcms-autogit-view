@@ -23,7 +23,7 @@
 package com.semanticcms.autogit.view;
 
 import com.aoindustries.html.Html;
-import com.aoindustries.lang.Projects;
+import com.aoindustries.net.URIEncoder;
 import com.aoindustries.servlet.http.Dispatcher;
 import com.semanticcms.autogit.servlet.AutoGit;
 import com.semanticcms.core.model.Page;
@@ -137,7 +137,7 @@ public class AutoGitView extends View {
 	@Override
 	public Map<String, String> getScripts() {
 		// TODO: Return a Script object type instead, with a follow-up of "jQuery.noConflict();"
-		return Collections.singletonMap("jquery", "/webjars/jquery/" + Projects.getVersion("org.webjars", "jquery", Maven.properties.getProperty("jquery.version")) + "/jquery.min.js");
+		return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/jquery.min.js");
 	}
 
 	/**
