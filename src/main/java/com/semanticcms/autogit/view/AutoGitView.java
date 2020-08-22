@@ -138,7 +138,7 @@ public class AutoGitView extends View {
 	@Override
 	public Map<String, String> getScripts() {
 		// TODO: Return a Script object type instead, with a follow-up of "jQuery.noConflict();"
-		return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/jquery.min.js");
+		return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/dist/jquery.min.js");
 	}
 
 	/**
