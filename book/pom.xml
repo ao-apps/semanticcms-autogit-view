@@ -29,7 +29,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		<relativePath>../../../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-view-book</artifactId><version>1.6.2-SNAPSHOT</version>
+	<groupId>com.semanticcms</groupId><artifactId>semanticcms-autogit-view-book</artifactId><version>1.6.2</version>
 	<packaging>bundle</packaging>
 
 	<properties>
@@ -74,7 +74,7 @@ along with semanticcms-autogit-view.  If not, see <http://www.gnu.org/licenses /
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-autogit-view.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/semanticcms-autogit-view.git</developerConnection>
 		<url>https://github.com/aoindustries/semanticcms-autogit-view</url>
-		<tag>HEAD</tag>
+		<tag>semanticcms-autogit-view-book-1.6.2</tag>
 	</scm>
 
 	<issueManagement>
