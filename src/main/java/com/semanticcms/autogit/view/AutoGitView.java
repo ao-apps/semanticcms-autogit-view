@@ -22,9 +22,9 @@
  */
 package com.semanticcms.autogit.view;
 
-import com.aoindustries.html.servlet.FlowContent;
-import com.aoindustries.net.URIEncoder;
-import com.aoindustries.servlet.http.Dispatcher;
+import com.aoapps.html.servlet.FlowContent;
+import com.aoapps.net.URIEncoder;
+import com.aoapps.servlet.http.Dispatcher;
 import com.semanticcms.autogit.servlet.AutoGit;
 import com.semanticcms.core.controller.SemanticCMS;
 import com.semanticcms.core.model.Page;
