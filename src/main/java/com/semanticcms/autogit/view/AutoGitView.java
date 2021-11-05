@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.SkipPageException;
 
-public class AutoGitView extends View {
+public final class AutoGitView extends View {
 
 	public static final String NAME = "git-status";
 
@@ -64,7 +64,9 @@ public class AutoGitView extends View {
 		}
 	}
 
-	private AutoGitView() {}
+	private AutoGitView() {
+		// Do nothing
+	}
 
 	@Override
 	public Group getGroup() {
