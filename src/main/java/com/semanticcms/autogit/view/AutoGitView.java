@@ -46,120 +46,120 @@ import javax.servlet.jsp.SkipPageException;
 
 public final class AutoGitView extends View {
 
-	public static final String NAME = "git-status";
+  public static final String NAME = "git-status";
 
-	private static final String HEAD_INCLUDE = "/semanticcms-autogit-view/head.inc.jspx";
+  private static final String HEAD_INCLUDE = "/semanticcms-autogit-view/head.inc.jspx";
 
-	private static final String JSPX_TARGET = "/semanticcms-autogit-view/view.inc.jspx";
+  private static final String JSPX_TARGET = "/semanticcms-autogit-view/view.inc.jspx";
 
-	@WebListener("Registers the \"" + NAME + "\" view and \"" + HEAD_INCLUDE + "\" head include in HtmlRenderer.")
-	public static class Initializer implements ServletContextListener {
-		@Override
-		public void contextInitialized(ServletContextEvent event) {
-			HtmlRenderer htmlRenderer = HtmlRenderer.getInstance(event.getServletContext());
-			htmlRenderer.addView(new AutoGitView());
-			htmlRenderer.addHeadInclude(HEAD_INCLUDE);
-		}
-		@Override
-		public void contextDestroyed(ServletContextEvent event) {
-			// Do nothing
-		}
-	}
+  @WebListener("Registers the \"" + NAME + "\" view and \"" + HEAD_INCLUDE + "\" head include in HtmlRenderer.")
+  public static class Initializer implements ServletContextListener {
+    @Override
+    public void contextInitialized(ServletContextEvent event) {
+      HtmlRenderer htmlRenderer = HtmlRenderer.getInstance(event.getServletContext());
+      htmlRenderer.addView(new AutoGitView());
+      htmlRenderer.addHeadInclude(HEAD_INCLUDE);
+    }
+    @Override
+    public void contextDestroyed(ServletContextEvent event) {
+      // Do nothing
+    }
+  }
 
-	private AutoGitView() {
-		// Do nothing
-	}
+  private AutoGitView() {
+    // Do nothing
+  }
 
-	@Override
-	public Group getGroup() {
-		return Group.FIXED;
-	}
+  @Override
+  public Group getGroup() {
+    return Group.FIXED;
+  }
 
-	@Override
-	public String getDisplay() {
-		return "Git";
-	}
+  @Override
+  public String getDisplay() {
+    return "Git";
+  }
 
-	@Override
-	public String getName() {
-		return NAME;
-	}
+  @Override
+  public String getName() {
+    return NAME;
+  }
 
-	@Override
-	public boolean getAppliesGlobally() {
-		return false;
-	}
+  @Override
+  public boolean getAppliesGlobally() {
+    return false;
+  }
 
-	/**
-	 * Does not apply to exports.
-	 */
-	@Override
-	public boolean isApplicable(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Page page
-	) throws ServletException, IOException {
-		return !Headers.isExporting(request);
-	}
+  /**
+   * Does not apply to exports.
+   */
+  @Override
+  public boolean isApplicable(
+    ServletContext servletContext,
+    HttpServletRequest request,
+    HttpServletResponse response,
+    Page page
+  ) throws ServletException, IOException {
+    return !Headers.isExporting(request);
+  }
 
-	@Override
-	public String getLinkId() {
-		return "semanticcms-autogit-view-link";
-	}
+  @Override
+  public String getLinkId() {
+    return "semanticcms-autogit-view-link";
+  }
 
-	@Override
-	public String getLinkCssClass(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
-		return AutoGit.getGitStatus(servletContext, request).getState().getCssClass();
-	}
+  @Override
+  public String getLinkCssClass(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
+    return AutoGit.getGitStatus(servletContext, request).getState().getCssClass();
+  }
 
-	@Override
-	public String getTitle(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Page page
-	) {
-		String bookTitle = SemanticCMS.getInstance(servletContext).getBook(page.getPageRef().getBookRef()).getTitle();
-		if(bookTitle != null && !bookTitle.isEmpty()) {
-			return "Git Status" + TITLE_SEPARATOR + bookTitle;
-		} else {
-			return "Git Status";
-		}
-	}
+  @Override
+  public String getTitle(
+    ServletContext servletContext,
+    HttpServletRequest request,
+    HttpServletResponse response,
+    Page page
+  ) {
+    String bookTitle = SemanticCMS.getInstance(servletContext).getBook(page.getPageRef().getBookRef()).getTitle();
+    if (bookTitle != null && !bookTitle.isEmpty()) {
+      return "Git Status" + TITLE_SEPARATOR + bookTitle;
+    } else {
+      return "Git Status";
+    }
+  }
 
-	@Override
-	public String getDescription(Page page) {
-		return null;
-	}
+  @Override
+  public String getDescription(Page page) {
+    return null;
+  }
 
-	@Override
-	public String getKeywords(Page page) {
-		return null;
-	}
+  @Override
+  public String getKeywords(Page page) {
+    return null;
+  }
 
-	@Override
-	public Map<String, String> getScripts() {
-		// TODO: Return a Script object type instead, with a follow-up of "jQuery.noConflict();"
-		return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/dist/jquery.min.js");
-	}
+  @Override
+  public Map<String, String> getScripts() {
+    // TODO: Return a Script object type instead, with a follow-up of "jQuery.noConflict();"
+    return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/dist/jquery.min.js");
+  }
 
-	/**
-	 * No robots for transient Git status.
-	 */
-	@Override
-	public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
-		return false;
-	}
+  /**
+   * No robots for transient Git status.
+   */
+  @Override
+  public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
+    return false;
+  }
 
-	@Override
-	public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
-		Dispatcher.include(
-			servletContext,
-			JSPX_TARGET,
-			request,
-			response,
-			Collections.singletonMap("page", page)
-		);
-	}
+  @Override
+  public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
+    Dispatcher.include(
+      servletContext,
+      JSPX_TARGET,
+      request,
+      response,
+      Collections.singletonMap("page", page)
+    );
+  }
 }

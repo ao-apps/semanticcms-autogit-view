@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-autogit-view - SemanticCMS view of automatic Git status.
-Copyright (C) 2016, 2019, 2020, 2021  AO Industries, Inc.
-	support@aoindustries.com
-	7262 Bull Pen Cir
-	Mobile, AL 36695
+Copyright (C) 2016, 2019, 2020, 2021, 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
 
 This file is part of semanticcms-autogit-view.
 
@@ -26,136 +26,139 @@ along with semanticcms-autogit-view.  If not, see <https://www.gnu.org/licenses/
 Views the Git status.
 
 Arguments:
-	arg.page  The page that should be displayed, this must have already been captured with at least meta data.
+  arg.page  The page that should be displayed, this must have already been captured with at least meta data.
 -->
 <jsp:root
-	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:autogit="https://semanticcms.com/autogit/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:jsp="http://java.sun.com/JSP/Page"
-	version="2.1"
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:autogit="https://semanticcms.com/autogit/taglib/"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  version="2.1"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" />
-	<jsp:directive.page session="false" />
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
 
-	<c:set var="page" value="${arg.page}" />
-	<c:set var="pageRef" value="${page.pageRef}" />
-	<c:set var="gitStatus" value="${autogit:getGitStatus()}" />
+  <c:set var="page" value="${arg.page}" />
+  <c:set var="pageRef" value="${page.pageRef}" />
+  <c:set var="gitStatus" value="${autogit:getGitStatus()}" />
 
-	<h1 id="semanticcms-autogit-view-h1" class="${fn:escapeXml(gitStatus.state.cssClass)}">Git Status - <ao:out value="${gitStatus.state}" /></h1>
-	<!-- Find if there is any "module" and "to" values -->
-	<c:set var="hasModule" value="false" />
-	<c:set var="hasTo" value="false" />
-	<c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
-		<c:if test="${!empty uncommittedChange.module}">
-			<c:set var="hasModule" value="true" />
-		</c:if>
-		<c:if test="${!empty uncommittedChange.to}">
-			<c:set var="hasTo" value="true" />
-		</c:if>
-	</c:forEach>
-	<div id="semanticcms-autogit-view-uncommitted-changes-table-container" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
-		<table id="semanticcms-autogit-view-uncommitted-changes-table" class="ao-grid">
-			<thead>
-				<tr>
-					<th>XY</th>
-					<th>Meaning</th>
-					<c:if test="${hasModule}">
-						<th>Module</th>
-					</c:if>
-					<th>From</th>
-					<c:if test="${hasTo}">
-						<th>To</th>
-					</c:if>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
-					<c:set var="meaning" value="${uncommittedChange.meaning}" />
-					<tr>
-						<td><code style="white-space:pre"><ao:out value="${uncommittedChange.x}${uncommittedChange.y}" /></code></td>
-						<td class="${fn:escapeXml(meaning.state.cssClass)}"><ao:out value="${meaning}" /></td>
-						<c:if test="${hasModule}">
-							<td><ao:out value="${uncommittedChange.module}" /></td>
-						</c:if>
-						<!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
-						<td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.from}" /></td>
-						<c:if test="${hasTo}">
-							<!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
-							<td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.to}" /></td>
-						</c:if>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	<!-- TODO: Move to separate script file with view-specific include -->
-	<ao:script><![CDATA[
-		// Keep this page up-to-date via Ajax
-		function updateGitStatus(title, h1, h1Class, uncommittedChanges) {
-			// Find if there is any "module" and "to" values
-			var hasModule = false;
-			var hasTo = false;
-			for(var i=0; i < uncommittedChanges.length; i++) {
-				var uncommittedChange = uncommittedChanges[i];
-				if(uncommittedChange.module !== "") {
-					hasModule = true;
-					if(hasTo) break;
-				}
-				if(uncommittedChange.to !== "") {
-					hasTo = true;
-					if(hasModule) break;
-				}
-			}
-			console.log("hasModule: " + hasModule);
-			console.log("hasTo: " + hasTo);
+  <h1 id="semanticcms-autogit-view-h1" class="${fn:escapeXml(gitStatus.state.cssClass)}">Git Status - <ao:out value="${gitStatus.state}" /></h1>
+  <!-- Find if there is any "module" and "to" values -->
+  <c:set var="hasModule" value="false" />
+  <c:set var="hasTo" value="false" />
+  <c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
+    <c:if test="${!empty uncommittedChange.module}">
+      <c:set var="hasModule" value="true" />
+    </c:if>
+    <c:if test="${!empty uncommittedChange.to}">
+      <c:set var="hasTo" value="true" />
+    </c:if>
+  </c:forEach>
+  <div id="semanticcms-autogit-view-uncommitted-changes-table-container" style="display: ${!empty gitStatus.uncommittedChanges ? 'block' : 'none'}">
+    <table id="semanticcms-autogit-view-uncommitted-changes-table" class="ao-grid">
+      <thead>
+        <tr>
+          <th>XY</th>
+          <th>Meaning</th>
+          <c:if test="${hasModule}">
+            <th>Module</th>
+          </c:if>
+          <th>From</th>
+          <c:if test="${hasTo}">
+            <th>To</th>
+          </c:if>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach var="uncommittedChange" items="${gitStatus.uncommittedChanges}">
+          <c:set var="meaning" value="${uncommittedChange.meaning}" />
+          <tr>
+            <td><code style="white-space:pre"><ao:out value="${uncommittedChange.x}${uncommittedChange.y}" /></code></td>
+            <td class="${fn:escapeXml(meaning.state.cssClass)}"><ao:out value="${meaning}" /></td>
+            <c:if test="${hasModule}">
+              <td><ao:out value="${uncommittedChange.module}" /></td>
+            </c:if>
+            <!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
+            <td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.from}" /></td>
+            <c:if test="${hasTo}">
+              <!-- TODO: Make links to open the files, if they still exist in the web root, like file:file tag -->
+              <td class="${fn:escapeXml(meaning.change.cssClass)}"><ao:out value="${uncommittedChange.to}" /></td>
+            </c:if>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
+  </div>
+  <!-- TODO: Move to separate script file with view-specific include -->
+  <ao:script><![CDATA[
+    // Keep this page up-to-date via Ajax
+    function updateGitStatus(title, h1, h1Class, uncommittedChanges) {
+      // Find if there is any "module" and "to" values
+      var hasModule = false;
+      var hasTo = false;
+      for(var i=0; i < uncommittedChanges.length; i++) {
+        var uncommittedChange = uncommittedChanges[i];
+        if(uncommittedChange.module !== "") {
+          hasModule = true;
+          if(hasTo) break;
+        }
+        if(uncommittedChange.to !== "") {
+          hasTo = true;
+          if(hasModule) break;
+        }
+      }
+      console.log("hasModule: " + hasModule);
+      console.log("hasTo: " + hasTo);
 
-			// title
-			document.title = title;
+      // title
+      document.title = title;
 
-			// h1
-			jQuery("#semanticcms-autogit-view-h1").text(h1).removeClass().addClass(h1Class);
+      // h1
+      jQuery("#semanticcms-autogit-view-h1").text(h1).removeClass().addClass(h1Class);
 
-			// semanticcms-autogit-view-uncommitted-changes-table-container div
-			var container = jQuery("#semanticcms-autogit-view-uncommitted-changes-table-container");
-			if(uncommittedChanges.length == 0) container.hide();
-			else container.show();
+      // semanticcms-autogit-view-uncommitted-changes-table-container div
+      var container = jQuery("#semanticcms-autogit-view-uncommitted-changes-table-container");
+      if(uncommittedChanges.length == 0) {
+        container.hide();
+      } else {
+        container.show();
+      }
 
-			// semanticcms-autogit-view-uncommitted-changes-table table
-			var table = jQuery("#semanticcms-autogit-view-uncommitted-changes-table");
+      // semanticcms-autogit-view-uncommitted-changes-table table
+      var table = jQuery("#semanticcms-autogit-view-uncommitted-changes-table");
 
-			// Update table headers from hasModule and hasTo
-			var tr = table.children("thead").children("tr");
-			// TODO
+      // Update table headers from hasModule and hasTo
+      var tr = table.children("thead").children("tr");
+      // TODO
 
-			// TODO: Update table data
-		}
+      // TODO: Update table data
+    }
 
-		jQuery(document).ready(function(){
-			semanticcms_autogit_taglib.gitStatusListeners.push(
-				{
-					onComplete: function(result) {
-						// console.log(result);
-						var gitStatus = result.gitStatus;
-						var state = gitStatus.state;
-						updateGitStatus(
-							"Git Status - " + state,
-							"Git Status - " + state,
-							state.cssClass,
-							gitStatus.uncommittedChanges
-						);
-					},
-					onError: function(textStatus, errorThrown) {
-						updateGitStatus(
-							"Git Status - Ajax Error",
-							"Git Status - Ajax Error",
-							"semanticcms-autogit-state-ajax-error",
-							new Array()
-						);
-					}
-				}
-			);
-		});
-	]]></ao:script>
+    jQuery(document).ready(function() {
+      semanticcms_autogit_taglib.gitStatusListeners.push(
+        {
+          onComplete: function(result) {
+            // console.log(result);
+            var gitStatus = result.gitStatus;
+            var state = gitStatus.state;
+            updateGitStatus(
+              "Git Status - " + state,
+              "Git Status - " + state,
+              state.cssClass,
+              gitStatus.uncommittedChanges
+            );
+          },
+          onError: function(textStatus, errorThrown) {
+            updateGitStatus(
+              "Git Status - Ajax Error",
+              "Git Status - Ajax Error",
+              "semanticcms-autogit-state-ajax-error",
+              new Array()
+            );
+          }
+        }
+      );
+    });
+  ]]></ao:script>
 </jsp:root>

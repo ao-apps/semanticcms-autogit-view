@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-autogit-view - SemanticCMS view of automatic Git status.
-Copyright (C) 2016, 2020, 2021  AO Industries, Inc.
-	support@aoindustries.com
-	7262 Bull Pen Cir
-	Mobile, AL 36695
+Copyright (C) 2016, 2020, 2021, 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
 
 This file is part of semanticcms-autogit-view.
 
@@ -22,19 +22,19 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-autogit-view.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <jsp:root
-	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:autogit="https://semanticcms.com/autogit/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:core="https://semanticcms.com/core/taglib/"
-	xmlns:jsp="http://java.sun.com/JSP/Page"
-	version="2.1"
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:autogit="https://semanticcms.com/autogit/taglib/"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:core="https://semanticcms.com/core/taglib/"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  version="2.1"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" />
-	<jsp:directive.page session="false" />
-	<c:if test="${!core:isExporting()}">
-		<ao:script src="/semanticcms-autogit-view/semanticcms-autogit-view.js" />
-		<ao:script>
-			semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
-		</ao:script>
-	</c:if>
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
+  <c:if test="${!core:isExporting()}">
+    <ao:script src="/semanticcms-autogit-view/semanticcms-autogit-view.js" />
+    <ao:script>
+      semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
+    </ao:script>
+  </c:if>
 </jsp:root>
