@@ -59,6 +59,7 @@ public final class AutoGitView extends View {
       semanticCMS.addView(new AutoGitView());
       semanticCMS.addHeadInclude(HEAD_INCLUDE);
     }
+
     @Override
     public void contextDestroyed(ServletContextEvent event) {
       // Do nothing
@@ -94,10 +95,10 @@ public final class AutoGitView extends View {
    */
   @Override
   public boolean isApplicable(
-    ServletContext servletContext,
-    HttpServletRequest request,
-    HttpServletResponse response,
-    Page page
+      ServletContext servletContext,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      Page page
   ) throws ServletException, IOException {
     return !Headers.isExporting(request);
   }
@@ -114,10 +115,10 @@ public final class AutoGitView extends View {
 
   @Override
   public String getTitle(
-    ServletContext servletContext,
-    HttpServletRequest request,
-    HttpServletResponse response,
-    Page page
+      ServletContext servletContext,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      Page page
   ) {
     String bookTitle = page.getPageRef().getBook().getTitle();
     if (bookTitle != null && !bookTitle.isEmpty()) {
@@ -154,11 +155,11 @@ public final class AutoGitView extends View {
   @Override
   public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
     Dispatcher.include(
-      servletContext,
-      JSPX_TARGET,
-      request,
-      response,
-      Collections.singletonMap("page", page)
+        servletContext,
+        JSPX_TARGET,
+        request,
+        response,
+        Collections.singletonMap("page", page)
     );
   }
 }
