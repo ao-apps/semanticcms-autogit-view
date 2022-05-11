@@ -44,6 +44,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.SkipPageException;
 
+/**
+ * SemanticCMS view of automatic Git status.
+ */
 public final class AutoGitView extends View {
 
   public static final String NAME = "git-status";
@@ -52,6 +55,9 @@ public final class AutoGitView extends View {
 
   private static final String JSPX_TARGET = "/semanticcms-autogit-view/view.inc.jspx";
 
+  /**
+   * Registers the "{@link #NAME}" view and "{@link #HEAD_INCLUDE}" head include in {@link HtmlRenderer}.
+   */
   @WebListener("Registers the \"" + NAME + "\" view and \"" + HEAD_INCLUDE + "\" head include in HtmlRenderer.")
   public static class Initializer implements ServletContextListener {
     @Override
@@ -154,7 +160,13 @@ public final class AutoGitView extends View {
   }
 
   @Override
-  public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
+  public <__ extends FlowContent<__>> void doView(
+      ServletContext servletContext,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      __ flow,
+      Page page
+  ) throws ServletException, IOException, SkipPageException {
     Dispatcher.include(
         servletContext,
         JSPX_TARGET,
