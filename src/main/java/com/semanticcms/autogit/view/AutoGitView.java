@@ -1,6 +1,6 @@
 /*
  * semanticcms-autogit-view - SemanticCMS view of automatic Git status.
- * Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,7 +24,6 @@
 package com.semanticcms.autogit.view;
 
 import com.aoapps.html.servlet.FlowContent;
-import com.aoapps.net.URIEncoder;
 import com.aoapps.servlet.http.Dispatcher;
 import com.semanticcms.autogit.servlet.AutoGit;
 import com.semanticcms.core.model.Page;
@@ -33,7 +32,6 @@ import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -142,12 +140,6 @@ public final class AutoGitView extends View {
   @Override
   public String getKeywords(Page page) {
     return null;
-  }
-
-  @Override
-  public Map<String, String> getScripts() {
-    // TODO: Return a Script object type instead, with a follow-up of "jQuery.noConflict();"
-    return Collections.singletonMap("jquery", "/webjars/jquery/" + URIEncoder.encodeURIComponent(Maven.jqueryVersion) + "/dist/jquery.min.js");
   }
 
   /**
