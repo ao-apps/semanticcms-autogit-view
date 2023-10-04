@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-autogit-view - SemanticCMS view of automatic Git status.
-Copyright (C) 2016, 2020, 2021, 2022  AO Industries, Inc.
+Copyright (C) 2016, 2020, 2021, 2022, 2023  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -32,9 +32,12 @@ along with semanticcms-autogit-view.  If not, see <https://www.gnu.org/licenses/
   <jsp:directive.page language="java" pageEncoding="UTF-8" />
   <jsp:directive.page session="false" />
   <c:if test="${!core:isExporting()}">
-    <ao:script src="/semanticcms-autogit-view/semanticcms-autogit-view.js" />
-    <ao:script>
-      semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
+    <!-- TODO: <wr:script /> -->
+    <!-- TODO: How is script ordering enforced since both semanticcms-autogit-taglib and semanticcms-autogit-view are deferred? -->
+    <ao:script src="/semanticcms-autogit-view/semanticcms-autogit-view.js" defer="true">
+      <ao:onload>
+        semanticcms_autogit_view.lastViewLinkCssClass = <ao:out value="${autogit:getGitStatus().state.cssClass}" />;
+      </ao:onload>
     </ao:script>
   </c:if>
 </jsp:root>

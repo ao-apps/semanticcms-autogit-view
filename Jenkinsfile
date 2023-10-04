@@ -29,8 +29,6 @@ def upstreamProjects = [
 
   // Direct
   '../../oss/fluent-html-servlet', // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet</artifactId>
-  '../../oss/lang', // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
-  '../../oss/net-types', // <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
   '../../oss/servlet-util', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
   '../../oss/taglib', // <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId>
   // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
@@ -45,9 +43,7 @@ def upstreamProjects = [
   // No Jenkins: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId>
 
   // Runtime Direct
-  '../../oss/servlet-firewall/webjars', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-firewall-webjars</artifactId>
   '../../oss/style', // <groupId>com.aoapps</groupId><artifactId>ao-style</artifactId>
-  // No Jenkins: <groupId>org.webjars.npm</groupId><artifactId>jquery</artifactId>
   // No Jenkins: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId>
 
   // BOM
