@@ -53,7 +53,7 @@ public final class AutoGitView extends View {
   private static final String JSPX_TARGET = "/semanticcms-autogit-view/view.inc.jspx";
 
   /**
-   * Registers the "{@link #NAME}" view and "{@link #HEAD_INCLUDE}" head include in {@link SemanticCMS}.
+   * Registers the "{@link AutoGitView#NAME}" view and "{@link AutoGitView#HEAD_INCLUDE}" head include in {@link SemanticCMS}.
    */
   @WebListener("Registers the \"" + NAME + "\" view and \"" + HEAD_INCLUDE + "\" head include in SemanticCMS.")
   public static class Initializer implements ServletContextListener {
