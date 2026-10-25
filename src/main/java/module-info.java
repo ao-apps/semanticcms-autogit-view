@@ -21,7 +21,6 @@
  * along with semanticcms-autogit-view.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.semanticcms.autogit.view {
-  exports com.semanticcms.autogit.view;
   // Direct
   requires com.aoapps.html.servlet; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet</artifactId>
   requires com.aoapps.servlet.util; // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
@@ -35,4 +34,6 @@ module com.semanticcms.autogit.view {
   requires com.semanticcms.core.model; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId>
   requires com.semanticcms.core.servlet; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId>
   requires com.semanticcms.core.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
+
+  exports com.semanticcms.autogit.view;
 }
